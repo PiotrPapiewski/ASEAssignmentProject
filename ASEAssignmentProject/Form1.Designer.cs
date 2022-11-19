@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ProgramWindow = new System.Windows.Forms.RichTextBox();
-            this.OutputWindow = new System.Windows.Forms.PictureBox();
+            this.InputBox = new System.Windows.Forms.RichTextBox();
+            this.OutputBox = new System.Windows.Forms.PictureBox();
             this.CommandLine = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.OutputWindow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OutputBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // ProgramWindow
+            // InputBox
             // 
-            this.ProgramWindow.Location = new System.Drawing.Point(12, 12);
-            this.ProgramWindow.Name = "ProgramWindow";
-            this.ProgramWindow.Size = new System.Drawing.Size(400, 300);
-            this.ProgramWindow.TabIndex = 0;
-            this.ProgramWindow.Text = "";
+            this.InputBox.Location = new System.Drawing.Point(12, 12);
+            this.InputBox.Name = "InputBox";
+            this.InputBox.Size = new System.Drawing.Size(400, 300);
+            this.InputBox.TabIndex = 0;
+            this.InputBox.Text = "";
             // 
-            // OutputWindow
+            // OutputBox
             // 
-            this.OutputWindow.Location = new System.Drawing.Point(444, 12);
-            this.OutputWindow.Name = "OutputWindow";
-            this.OutputWindow.Size = new System.Drawing.Size(400, 300);
-            this.OutputWindow.TabIndex = 1;
-            this.OutputWindow.TabStop = false;
+            this.OutputBox.Location = new System.Drawing.Point(444, 12);
+            this.OutputBox.Name = "OutputBox";
+            this.OutputBox.Size = new System.Drawing.Size(400, 300);
+            this.OutputBox.TabIndex = 1;
+            this.OutputBox.TabStop = false;
             // 
             // CommandLine
             // 
@@ -63,11 +63,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 367);
             this.Controls.Add(this.CommandLine);
-            this.Controls.Add(this.OutputWindow);
-            this.Controls.Add(this.ProgramWindow);
+            this.Controls.Add(this.OutputBox);
+            this.Controls.Add(this.InputBox);
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.OutputWindow)).EndInit();
+            this.Text = "ASE Assignment";
+            ((System.ComponentModel.ISupportInitialize)(this.OutputBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -75,8 +75,8 @@
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox ProgramWindow;
-        private System.Windows.Forms.PictureBox OutputWindow;
+        private System.Windows.Forms.RichTextBox InputBox;
+        private System.Windows.Forms.PictureBox OutputBox;
         private System.Windows.Forms.TextBox CommandLine;
     }
 }
