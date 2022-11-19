@@ -16,5 +16,15 @@ namespace ASEAssignmentProject
         {
             InitializeComponent();
         }
+
+        private void CommandLine_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void OutputBox_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
