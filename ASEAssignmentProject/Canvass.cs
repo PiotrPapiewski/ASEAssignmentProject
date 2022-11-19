@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ASEAssignmentProject
 {
-    internal class Canvass
+    public class Canvass
     {
         Graphics g; //creates graphics 
         public Pen p; //creates pen used to draw
