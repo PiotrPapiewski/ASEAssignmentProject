@@ -20,12 +20,12 @@ namespace ASEAssignmentProject
             MyCanvass = new Canvass(Graphics.FromImage(DrawingSurface)); //updates mycanvass to be able to display drawings onto 'DrawingSurface' 
         }
 
-        private void CommandLine_KeyDown(object sender, KeyEventArgs e)
+        public void CommandLine_KeyDown(object sender, KeyEventArgs e)
         {
 
         }
 
-        private void OutputBox_Paint(object sender, PaintEventArgs e)
+        public void OutputBox_Paint(object sender, PaintEventArgs e)
         {
 
         }
