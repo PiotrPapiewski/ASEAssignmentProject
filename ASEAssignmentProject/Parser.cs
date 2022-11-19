@@ -14,8 +14,8 @@ namespace ASEAssignmentProject
 
         public Parser(Bitmap DrawingSurface, Canvass canvass)
         {
-            this.DrawingSurface = DrawingSurface;
-            this.Canvass = canvass;
+            this.DrawingSurface = DrawingSurface; //assings DrawingSurface to a parameter in parser class
+            this.Canvass = canvass; //assings canvass to a parameter in parser class
         }
 
         public void MyParser(string CommandLine)
