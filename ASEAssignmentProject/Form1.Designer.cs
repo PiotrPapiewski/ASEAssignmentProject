@@ -49,6 +49,7 @@
             this.OutputBox.Size = new System.Drawing.Size(400, 300);
             this.OutputBox.TabIndex = 1;
             this.OutputBox.TabStop = false;
+            this.OutputBox.Paint += new System.Windows.Forms.PaintEventHandler(this.OutputBox_Paint);
             // 
             // CommandLine
             // 
@@ -56,6 +57,7 @@
             this.CommandLine.Name = "CommandLine";
             this.CommandLine.Size = new System.Drawing.Size(400, 20);
             this.CommandLine.TabIndex = 2;
+            this.CommandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CommandLine_KeyDown);
             // 
             // Form1
             // 
