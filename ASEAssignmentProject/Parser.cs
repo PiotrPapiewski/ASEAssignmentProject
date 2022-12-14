@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ASEAssignmentProject
 {
@@ -11,11 +12,13 @@ namespace ASEAssignmentProject
     {
         Canvass Canvass; //creates an instance of canvass class in parser class
         Bitmap DrawingSurface; //creates an bitmap in parser
+        Label ErrorDisplay;
 
-        public Parser(Bitmap DrawingSurface, Canvass canvass)
+        public Parser(Bitmap DrawingSurface, Canvass canvass, Label ErrorDisplay)
         {
             this.DrawingSurface = DrawingSurface; //assings DrawingSurface to a parameter in parser class
             this.Canvass = canvass; //assings canvass to a parameter in parser class
+            this.ErrorDisplay = ErrorDisplay; //assings ErrorDisplay to a parameter in parser class
         }
 
         public void MyParser(string CommandLine)
@@ -29,7 +32,7 @@ namespace ASEAssignmentProject
             int[] ParametersInt; //creates empty integer array for parameters
 
             if (strArray.Length > 1) //check if length of array is more than one
-            {
+            {   
                 if (Command.Equals("fill")) //checks if command fill was entered
                 {
                     Canvass.SetFill(strArray[1]); //if command fill was entered executes method setfill from canvass
@@ -40,41 +43,40 @@ namespace ASEAssignmentProject
                     ParametersInt = new int[Parameters.Length]; //creats new array based on how long paratemetrs array is
                     for (int i = 0; i < Parameters.Length; i++) //loops through the Parameter array 
                     {
+                        try { 
                         ParametersInt[i] = Convert.ToInt32(Parameters[i]); //converts into integer and stores in new array ParametersInt
+                        } 
+                        catch(FormatException) 
+                        {
+                            ErrorDisplay.Text = "Wrong Parameter, Parameter must be integer."; //displays error if parameter is not a integer
+                        }
 
                     } //checks which commands are entered and executes appropriate method
                     if (Command.Equals("drawline"))
                     {
                         Canvass.DrawLine(ParametersInt[0], ParametersInt[1]); //uses canvass method to draw
-
                     }
                     else if (Command.Equals("drawsquare"))
                     {
                         Canvass.DrawSquare(ParametersInt[0]);
-
                     }
                     else if (Command.Equals("drawrectangle"))
                     {
                         Canvass.DrawRectangle(ParametersInt[0], ParametersInt[1]);
-
                     }
                     else if (Command.Equals("drawcircle"))
                     {
                         Canvass.DrawCircle(ParametersInt[0]);
-
                     }
                     else if (Command.Equals("drawtriangle"))
                     {
                         Canvass.DrawTriangle(ParametersInt[0], ParametersInt[1]);
-
                     }
                     else if (Command.Equals("movepen"))
                     {
                         Canvass.MovePen(ParametersInt[0], ParametersInt[1]);
-
                     }
                 }
-
             }
             else
             {
@@ -102,6 +104,8 @@ namespace ASEAssignmentProject
                 {
                     Canvass.PenColourBlack();
                 }
+                else
+                    ErrorDisplay.Text = "Wrong Command.";
             }
         }
 

@@ -31,12 +31,13 @@
             this.InputBox = new System.Windows.Forms.RichTextBox();
             this.OutputBox = new System.Windows.Forms.PictureBox();
             this.CommandLine = new System.Windows.Forms.TextBox();
+            this.ErrorDisplay = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.OutputBox)).BeginInit();
             this.SuspendLayout();
             // 
             // InputBox
             // 
-            this.InputBox.Location = new System.Drawing.Point(12, 12);
+            this.InputBox.Location = new System.Drawing.Point(12, 8);
             this.InputBox.Name = "InputBox";
             this.InputBox.Size = new System.Drawing.Size(400, 300);
             this.InputBox.TabIndex = 0;
@@ -44,7 +45,7 @@
             // 
             // OutputBox
             // 
-            this.OutputBox.Location = new System.Drawing.Point(444, 12);
+            this.OutputBox.Location = new System.Drawing.Point(444, 8);
             this.OutputBox.Name = "OutputBox";
             this.OutputBox.Size = new System.Drawing.Size(400, 300);
             this.OutputBox.TabIndex = 1;
@@ -53,17 +54,26 @@
             // 
             // CommandLine
             // 
-            this.CommandLine.Location = new System.Drawing.Point(12, 318);
+            this.CommandLine.Location = new System.Drawing.Point(12, 314);
             this.CommandLine.Name = "CommandLine";
             this.CommandLine.Size = new System.Drawing.Size(400, 20);
             this.CommandLine.TabIndex = 2;
             this.CommandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CommandLine_KeyDown);
+            // 
+            // ErrorDisplay
+            // 
+            this.ErrorDisplay.AutoSize = true;
+            this.ErrorDisplay.Location = new System.Drawing.Point(450, 286);
+            this.ErrorDisplay.Name = "ErrorDisplay";
+            this.ErrorDisplay.Size = new System.Drawing.Size(75, 12);
+            this.ErrorDisplay.TabIndex = 3;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(856, 367);
+            this.Controls.Add(this.ErrorDisplay);
             this.Controls.Add(this.CommandLine);
             this.Controls.Add(this.OutputBox);
             this.Controls.Add(this.InputBox);
@@ -80,6 +90,7 @@
         private System.Windows.Forms.RichTextBox InputBox;
         private System.Windows.Forms.PictureBox OutputBox;
         private System.Windows.Forms.TextBox CommandLine;
+        private System.Windows.Forms.Label ErrorDisplay;
     }
 }
 
