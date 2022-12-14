@@ -66,72 +66,70 @@ namespace ASEAssignmentProject
                         }
 
                     } //checks which commands are entered and executes appropriate method
-                    if (Command.Equals("drawline"))
-                    {
-                        if (ParameterCheck(2))
+                    if (Command.Equals("drawline") && ParameterCheck(2))
+                    {                        
                             Canvass.DrawLine(ParametersInt[0], ParametersInt[1]); //uses canvass method to draw
                     }
-                    else if (Command.Equals("drawsquare"))
-                    {
-                        if (ParameterCheck(1))
+                    else if (Command.Equals("drawsquare") && ParameterCheck(1))
+                    {                     
                             Canvass.DrawSquare(ParametersInt[0]);
                     }
-                    else if (Command.Equals("drawrectangle"))
+                    else if (Command.Equals("drawrectangle") && ParameterCheck(2))
                     {
-                        if (ParameterCheck(2)
                             Canvass.DrawRectangle(ParametersInt[0], ParametersInt[1]);
                     }
-                    else if (Command.Equals("drawcircle"))
-                    {
-                        if (ParameterCheck(1))
+                    else if (Command.Equals("drawcircle") && ParameterCheck(1))
+                    {                       
                             Canvass.DrawCircle(ParametersInt[0]);
                     }
-                    else if (Command.Equals("drawtriangle"))
+                    else if (Command.Equals("drawtriangle") && ParameterCheck(2))
                     {
-                        if (ParameterCheck(2))
                             Canvass.DrawTriangle(ParametersInt[0], ParametersInt[1]);
                     }
-                    else if (Command.Equals("movepen"))
-                    {
-                        if (ParameterCheck(2))
+                    else if (Command.Equals("movepen") && ParameterCheck(2))
+                    {                       
                             Canvass.MovePen(ParametersInt[0], ParametersInt[1]);
                     }
+                    else if (ParameterCheck(1))
+                    {
+                        ErrorDisplay.Text = "Wrong Command.";
+                    }
+                    else if (ParameterCheck(2))
+                    {
+                        ErrorDisplay.Text = "Wrong Command.";
+                    }
+                    
+                        
                 }
             }
             else
             {
-                if (Command.Equals("reset"))
+                if (Command.Equals("reset") && ParameterCheck(0))
                 {
-                    if (ParameterCheck(0))
                         Canvass.Reset();
                 }
-                else if (Command.Equals("clear"))
+                else if (Command.Equals("clear") && ParameterCheck(0))
                 {
-                    if (ParameterCheck(0))
                         Canvass.Clear(DrawingSurface);
                 }
-                else if (Command.Equals("red"))
+                else if (Command.Equals("red") && ParameterCheck(0))
                 {
-                    if (ParameterCheck(0))
                         Canvass.PenColourRed();
                 }
-                else if (Command.Equals("blue"))
+                else if (Command.Equals("blue") && ParameterCheck(0))
                 {
-                    if (ParameterCheck(0))
                         Canvass.PenColourBlue();
                 }
-                else if (Command.Equals("yellow"))
+                else if (Command.Equals("yellow") && ParameterCheck(0))
                 {
-                    if (ParameterCheck(0))
                         Canvass.PenColourYellow();
                 }
-                else if (Command.Equals("black"))
+                else if (Command.Equals("black") && ParameterCheck(0))
                 {
-                    if (ParameterCheck(0))
                         Canvass.PenColourBlack();
                 }
                 else
-                    ErrorDisplay.Text = "Wrong Command.";
+                    ErrorDisplay.Text = "This command does not require integer.";
             }
         }
 
