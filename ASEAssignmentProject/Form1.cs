@@ -24,7 +24,7 @@ namespace ASEAssignmentProject
         {
             if (e.KeyCode == Keys.Enter) //creates an event that once user presses enter key it executes program
             {
-                Parser Parser = new Parser(DrawingSurface, MyCanvass); //creates an instance of a parser class
+                Parser Parser = new Parser(DrawingSurface, MyCanvass, ErrorDisplay); //creates an instance of a parser class
                 Parser.MyParser(CommandLine.Text); //takes input from the commandline and runs thorugh commands from parser class and executes MyParser method
                 if (CommandLine.Text.Equals("run")) //if command line is run then it executes ProgramWindow method from parser class
                 {
@@ -38,6 +38,6 @@ namespace ASEAssignmentProject
         {   //draws using Graphisc on to the DrawingSurface
             Graphics g = e.Graphics;
             g.DrawImageUnscaled(DrawingSurface, 0, 0);
-        }
+        }  
     }
 }
