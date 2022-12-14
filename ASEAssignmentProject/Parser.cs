@@ -21,15 +21,29 @@ namespace ASEAssignmentProject
             this.ErrorDisplay = ErrorDisplay; //assings ErrorDisplay to a parameter in parser class
         }
 
+        String Command; //creates string Command variable
+        String[] strArray;  //creates a stirng array
+        String[] Parameters; //creates empty array for parameter
+        int[] ParametersInt; //creates empty integer array for parameters
+
+        public bool ParameterCheck(int ParameterNmb)
+        {
+            if (ParameterNmb != Parameters.Length)
+            {
+                ErrorDisplay.Text = "Incorrect number of parameters.";
+                return false;
+            }   
+                return true;
+        }
+
         public void MyParser(string CommandLine)
         {
-            String Command = CommandLine.ToLower(); //allows commands to be enter using lower case and stores user impunt in command variable
-            String[] strArray = Command.Split(' '); //splits user command based on space between arguments and puts it in strarray
-            String[] Parameters; //creates empty array for parameters
-
+            Command = CommandLine.ToLower(); //allows commands to be enter using lower case and stores user impunt in command variable
+            strArray = CommandLine.Split(' ');//splits user command based on space between arguments and puts it in strarray
             Command = strArray[0]; //specifies that position 0 in a array is a command
 
-            int[] ParametersInt; //creates empty integer array for parameters
+            if (ErrorDisplay.Text != "")
+                ErrorDisplay.Text = "";
 
             if (strArray.Length > 1) //check if length of array is more than one
             {   
@@ -48,33 +62,39 @@ namespace ASEAssignmentProject
                         } 
                         catch(FormatException) 
                         {
-                            ErrorDisplay.Text = "Wrong Parameter, Parameter must be integer."; //displays error if parameter is not a integer
+                            ErrorDisplay.Text = "Parameter must be integer."; //displays error if parameter is not a integer
                         }
 
                     } //checks which commands are entered and executes appropriate method
                     if (Command.Equals("drawline"))
                     {
-                        Canvass.DrawLine(ParametersInt[0], ParametersInt[1]); //uses canvass method to draw
+                        if (ParameterCheck(2))
+                            Canvass.DrawLine(ParametersInt[0], ParametersInt[1]); //uses canvass method to draw
                     }
                     else if (Command.Equals("drawsquare"))
                     {
-                        Canvass.DrawSquare(ParametersInt[0]);
+                        if (ParameterCheck(1))
+                            Canvass.DrawSquare(ParametersInt[0]);
                     }
                     else if (Command.Equals("drawrectangle"))
                     {
-                        Canvass.DrawRectangle(ParametersInt[0], ParametersInt[1]);
+                        if (ParameterCheck(2)
+                            Canvass.DrawRectangle(ParametersInt[0], ParametersInt[1]);
                     }
                     else if (Command.Equals("drawcircle"))
                     {
-                        Canvass.DrawCircle(ParametersInt[0]);
+                        if (ParameterCheck(1))
+                            Canvass.DrawCircle(ParametersInt[0]);
                     }
                     else if (Command.Equals("drawtriangle"))
                     {
-                        Canvass.DrawTriangle(ParametersInt[0], ParametersInt[1]);
+                        if (ParameterCheck(2))
+                            Canvass.DrawTriangle(ParametersInt[0], ParametersInt[1]);
                     }
                     else if (Command.Equals("movepen"))
                     {
-                        Canvass.MovePen(ParametersInt[0], ParametersInt[1]);
+                        if (ParameterCheck(2))
+                            Canvass.MovePen(ParametersInt[0], ParametersInt[1]);
                     }
                 }
             }
@@ -82,27 +102,33 @@ namespace ASEAssignmentProject
             {
                 if (Command.Equals("reset"))
                 {
-                    Canvass.Reset();
+                    if (ParameterCheck(0))
+                        Canvass.Reset();
                 }
                 else if (Command.Equals("clear"))
                 {
-                    Canvass.Clear(DrawingSurface);
+                    if (ParameterCheck(0))
+                        Canvass.Clear(DrawingSurface);
                 }
                 else if (Command.Equals("red"))
                 {
-                    Canvass.PenColourRed();
+                    if (ParameterCheck(0))
+                        Canvass.PenColourRed();
                 }
                 else if (Command.Equals("blue"))
                 {
-                    Canvass.PenColourBlue();
+                    if (ParameterCheck(0))
+                        Canvass.PenColourBlue();
                 }
                 else if (Command.Equals("yellow"))
                 {
-                    Canvass.PenColourYellow();
+                    if (ParameterCheck(0))
+                        Canvass.PenColourYellow();
                 }
                 else if (Command.Equals("black"))
                 {
-                    Canvass.PenColourBlack();
+                    if (ParameterCheck(0))
+                        Canvass.PenColourBlack();
                 }
                 else
                     ErrorDisplay.Text = "Wrong Command.";
