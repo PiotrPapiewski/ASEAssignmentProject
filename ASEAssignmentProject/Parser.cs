@@ -12,13 +12,14 @@ namespace ASEAssignmentProject
     {
         Canvass Canvass; //creates an instance of canvass class in parser class
         Bitmap DrawingSurface; //creates an bitmap in parser
-        Label ErrorDisplay;
-
-        public Parser(Bitmap DrawingSurface, Canvass canvass, Label ErrorDisplay)
+        Label ErrorDisplay; //creates label in parser
+        RichTextBox rtb; //creates richtextbox in parser
+        public Parser(Bitmap DrawingSurface, Canvass canvass, Label ErrorDisplay, RichTextBox rtb)
         {
             this.DrawingSurface = DrawingSurface; //assings DrawingSurface to a parameter in parser class
             this.Canvass = canvass; //assings canvass to a parameter in parser class
             this.ErrorDisplay = ErrorDisplay; //assings ErrorDisplay to a parameter in parser class
+            this.rtb = rtb; //assings rtb to a parameter in parser class
         }
 
         String Command; //creates string Command variable
@@ -106,27 +107,37 @@ namespace ASEAssignmentProject
             {
                 if (Command.Equals("reset") && ParameterCheck(0))
                 {
-                        Canvass.Reset();
+                    Canvass.Reset();
                 }
                 else if (Command.Equals("clear") && ParameterCheck(0))
                 {
-                        Canvass.Clear(DrawingSurface);
+                    Canvass.Clear(DrawingSurface);
                 }
                 else if (Command.Equals("red") && ParameterCheck(0))
                 {
-                        Canvass.PenColourRed();
+                    Canvass.PenColourRed();
                 }
                 else if (Command.Equals("blue") && ParameterCheck(0))
                 {
-                        Canvass.PenColourBlue();
+                    Canvass.PenColourBlue();
                 }
                 else if (Command.Equals("yellow") && ParameterCheck(0))
                 {
-                        Canvass.PenColourYellow();
+                    Canvass.PenColourYellow();
                 }
                 else if (Command.Equals("black") && ParameterCheck(0))
                 {
-                        Canvass.PenColourBlack();
+                    Canvass.PenColourBlack();
+                }
+                else if (Command.Equals("save"))
+                {
+                    Save save = new Save();
+                    save.SaveFile(rtb);
+                }
+                else if (Command.Equals("load"))
+                {
+                    Load load = new Load();
+                    load.LoadFile(rtb); 
                 }
                 else
                     ErrorDisplay.Text = "This command does not require integer.";
