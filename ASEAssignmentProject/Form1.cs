@@ -40,15 +40,5 @@ namespace ASEAssignmentProject
             Graphics g = e.Graphics;
             g.DrawImageUnscaled(DrawingSurface, 0, 0);
         }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-
-        }
     }
 }
