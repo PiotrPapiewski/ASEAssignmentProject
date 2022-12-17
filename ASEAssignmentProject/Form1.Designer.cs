@@ -65,7 +65,7 @@
             this.ErrorDisplay.AutoSize = true;
             this.ErrorDisplay.Location = new System.Drawing.Point(450, 286);
             this.ErrorDisplay.Name = "ErrorDisplay";
-            this.ErrorDisplay.Size = new System.Drawing.Size(75, 12);
+            this.ErrorDisplay.Size = new System.Drawing.Size(0, 13);
             this.ErrorDisplay.TabIndex = 3;
             // 
             // Form1
