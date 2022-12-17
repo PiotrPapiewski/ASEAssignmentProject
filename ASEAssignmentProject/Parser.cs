@@ -62,8 +62,7 @@ namespace ASEAssignmentProject
                     ErrorDisplay.Text = "Variable Exists";
                 }
                 else if (!Variables.Contains(var) && Parameters[0].Equals("="))
-                {                             
-                    Console.WriteLine("jajo");
+                {                                                
                     var.SetValue(Parameters[1]);
                     Variables.Add(var);
                 }
