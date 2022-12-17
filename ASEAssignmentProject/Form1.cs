@@ -32,12 +32,23 @@ namespace ASEAssignmentProject
                 }
                 Refresh(); //refreshes the canvass to display drawings             
             }
+
         }
 
         public void OutputBox_Paint(object sender, PaintEventArgs e)
         {   //draws using Graphisc on to the DrawingSurface
             Graphics g = e.Graphics;
             g.DrawImageUnscaled(DrawingSurface, 0, 0);
-        }  
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }

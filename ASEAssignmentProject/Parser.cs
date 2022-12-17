@@ -22,6 +22,8 @@ namespace ASEAssignmentProject
             this.rtb = rtb; //assings rtb to a parameter in parser class
         }
 
+        List<Variable>Variables = new List<Variable>(); 
+
         String Command; //creates string Command variable
         String[] strArray;  //creates a stirng array
         String[] Parameters; //creates empty array for parameter
@@ -42,19 +44,31 @@ namespace ASEAssignmentProject
             Command = CommandLine.ToLower(); //allows commands to be enter using lower case and stores user impunt in command variable
             strArray = CommandLine.Split(' ');//splits user command based on space between arguments and puts it in strarray
             Command = strArray[0]; //specifies that position 0 in a array is a command
+            
+            Variable var = new Variable(Command);
 
             if (ErrorDisplay.Text != "")
                 ErrorDisplay.Text = "";
 
             if (strArray.Length > 1) //check if length of array is more than one
-            {   
+            {
+                Parameters = strArray[1].Split(','); //Splits user input again this time it splits parameters based on comma,     
                 if (Command.Equals("fill")) //checks if command fill was entered
                 {
                     Canvass.SetFill(strArray[1]); //if command fill was entered executes method setfill from canvass
                 }
-                else
+                else if (Variables.Contains(var) && Parameters[0].Equals("="))
                 {
-                    Parameters = strArray[1].Split(','); //Splits user input again this time it splits parameters based on comma,
+                    ErrorDisplay.Text = "Variable Exists";
+                }
+                else if (!Variables.Contains(var) && Parameters[0].Equals("="))
+                {                             
+                    Console.WriteLine("jajo");
+                    var.SetValue(Parameters[1]);
+                    Variables.Add(var);
+                }
+                else
+                {                          
                     ParametersInt = new int[Parameters.Length]; //creats new array based on how long paratemetrs array is
                     for (int i = 0; i < Parameters.Length; i++) //loops through the Parameter array 
                     {
@@ -93,42 +107,40 @@ namespace ASEAssignmentProject
                     }
                     else if (ParameterCheck(1))
                     {
-                        ErrorDisplay.Text = "Wrong Command.";
+                       ErrorDisplay.Text = "Wrong Command.";
                     }
                     else if (ParameterCheck(2))
                     {
                         ErrorDisplay.Text = "Wrong Command.";
-                    }
-                    
-                        
+                    }                                                            
                 }
             }
             else
             {
-                if (Command.Equals("reset") && ParameterCheck(0))
+                if (Command.Equals("reset"))
                 {
                     Canvass.Reset();
                 }
-                else if (Command.Equals("clear") && ParameterCheck(0))
+                else if (Command.Equals("clear"))
                 {
                     Canvass.Clear(DrawingSurface);
                 }
-                else if (Command.Equals("red") && ParameterCheck(0))
+                else if (Command.Equals("red"))
                 {
                     Canvass.PenColourRed();
                 }
-                else if (Command.Equals("blue") && ParameterCheck(0))
+                else if (Command.Equals("blue"))
                 {
                     Canvass.PenColourBlue();
                 }
-                else if (Command.Equals("yellow") && ParameterCheck(0))
+                else if (Command.Equals("yellow"))
                 {
                     Canvass.PenColourYellow();
                 }
-                else if (Command.Equals("black") && ParameterCheck(0))
+                else if (Command.Equals("black"))
                 {
                     Canvass.PenColourBlack();
-                }
+                }               
                 else if (Command.Equals("save"))
                 {
                     Save save = new Save();
@@ -139,7 +151,7 @@ namespace ASEAssignmentProject
                     Load load = new Load();
                     load.LoadFile(rtb); 
                 }
-                else
+                else 
                     ErrorDisplay.Text = "This command does not require integer.";
             }
         }
