@@ -31,12 +31,12 @@ namespace ASEAssignmentProject
 
         public bool ParameterCheck(int ParameterNmb)
         {
-            if (ParameterNmb != Parameters.Length)
+            if (ParameterNmb != Parameters.Length) //Checks if ParameterNmb is not equal to Parameters.Length
             {
-                ErrorDisplay.Text = "Incorrect number of parameters.";
-                return false;
-            }   
-                return true;
+                ErrorDisplay.Text = "Incorrect number of parameters."; //Displays error message
+                return false;                                          //retuns false
+            }           
+                return true;                                           //returns true
         }
 
         public void MyParser(string CommandLine)
@@ -52,19 +52,27 @@ namespace ASEAssignmentProject
 
             if (strArray.Length > 1) //check if length of array is more than one
             {
-                Parameters = strArray[1].Split(','); //Splits user input again this time it splits parameters based on comma,     
+                Parameters = strArray[1].Split(','); //Splits user input again this time it splits parameters based on comma,
+                for (int i = 0; i < Parameters.Length; i++) // loops through parameters
+                {
+                    if (Variables.Contains(new Variable(Parameters[i]))) //checks if Variable exists
+                    {
+                        Parameters[i] = Variables[Variables.IndexOf(new Variable(Parameters[i]))].GetValue(); //replaces name of the variable for its value
+                    }
+                }    
+
                 if (Command.Equals("fill")) //checks if command fill was entered
                 {
                     Canvass.SetFill(strArray[1]); //if command fill was entered executes method setfill from canvass
                 }
-                else if (Variables.Contains(var) && Parameters[0].Equals("="))
+                else if (Variables.Contains(var) && Parameters[0].Equals("=")) //checks if variable already exists
                 {
-                    ErrorDisplay.Text = "Variable Exists";
+                    ErrorDisplay.Text = "Variable Exists"; //displays error message if parameter already exists                    
                 }
-                else if (!Variables.Contains(var) && Parameters[0].Equals("="))
+                else if (!Variables.Contains(var) && Parameters[0].Equals("=")) //checks if variable doesn't exists
                 {                                                
-                    var.SetValue(Parameters[1]);
-                    Variables.Add(var);
+                    var.SetValue(Parameters[1]); //sets value to variable
+                    Variables.Add(var); //adds variable to the list
                 }
                 else
                 {                          
@@ -151,7 +159,7 @@ namespace ASEAssignmentProject
                     load.LoadFile(rtb); 
                 }
                 else 
-                    ErrorDisplay.Text = "This command does not require integer.";
+                    ErrorDisplay.Text = "This command does not require integer."; 
             }
         }
 
