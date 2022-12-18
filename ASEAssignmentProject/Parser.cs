@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.PropertyGridInternal;
 
 namespace ASEAssignmentProject
 {
@@ -14,6 +15,7 @@ namespace ASEAssignmentProject
         Bitmap DrawingSurface; //creates an bitmap in parser
         Label ErrorDisplay; //creates label in parser
         RichTextBox rtb; //creates richtextbox in parser
+        int LineNumber = 0;
         public Parser(Bitmap DrawingSurface, Canvass canvass, Label ErrorDisplay, RichTextBox rtb)
         {
             this.DrawingSurface = DrawingSurface; //assings DrawingSurface to a parameter in parser class
@@ -23,7 +25,8 @@ namespace ASEAssignmentProject
         }
 
         List<Variable>Variables = new List<Variable>(); 
-
+        
+        String[] Commands;
         String Command; //creates string Command variable
         String[] strArray;  //creates a stirng array
         String[] Parameters; //creates empty array for parameter
@@ -73,6 +76,28 @@ namespace ASEAssignmentProject
                 {                                                
                     var.SetValue(Parameters[1]); //sets value to variable
                     Variables.Add(var); //adds variable to the list
+                }
+                else if (Command.Equals("if"))
+                {
+                    IF IF = new IF(Parameters[0]);
+                    for (int i = LineNumber; i < Commands.Length; i++)
+                    {
+                        if (Commands[i] != "endif")
+                        {
+                            IF.AddCommand(Commands[i]);
+                            
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    Console.WriteLine("Test2");
+                    if (IF.Check())
+                    {
+                        MyParser(IF.CommandsToString());
+                    }
+                    LineNumber += IF.GetSize() + 1;
                 }
                 else
                 {                          
@@ -165,10 +190,11 @@ namespace ASEAssignmentProject
 
         public void ProgramWindow(string UserInput) //this method allows multiple compands to be written in InputBox
         {
-            string[] Commands = UserInput.Split(new string[] { "\n" }, StringSplitOptions.None); //splits commands from inputbox by new line
-            foreach (string Command in Commands)
+            Commands = UserInput.Split(new string[] { "\n" }, StringSplitOptions.None); //splits commands from inputbox by new line
+            for (int i = 0; i < Commands.Length; i++)
             {
-                MyParser(Command); //loops and executs commands from MyParser method so they can be used in ProgramWindow method
+                MyParser(Commands[i]); //loops and executs commands from MyParser method so they can be used in ProgramWindow method
+                LineNumber++;
             }
         }
     }
