@@ -12,16 +12,12 @@ namespace ASEAssignmentProject
         String value;
         public Variable(String name)
         {
-
             this.name = name;
-     
         }
 
         public void SetValue(String value)
         {
-
             this.value = value;
-
         }
         public override int GetHashCode()
         {
@@ -37,6 +33,10 @@ namespace ASEAssignmentProject
             }
 
             return this.name.Equals(item.name);
+        }
+        public String GetValue()
+        {
+            return value;
         }
     }
     
