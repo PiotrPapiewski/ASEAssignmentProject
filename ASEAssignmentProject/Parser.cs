@@ -24,7 +24,16 @@ namespace ASEAssignmentProject
             this.rtb = rtb; //assings rtb to a parameter in parser class
         }
 
-        List<Variable>Variables = new List<Variable>(); 
+        public Parser(Bitmap DrawingSurface, Canvass canvass)
+        {
+            this.DrawingSurface = DrawingSurface;
+            this.Canvass = canvass;
+      
+        }
+
+        public List<Variable>Variables = new List<Variable>(); 
+
+        List<Method>Methods = new List<Method>();    
         
         String[] Commands;
         String Command; //creates string Command variable
@@ -50,9 +59,11 @@ namespace ASEAssignmentProject
             
             Variable var = new Variable(Command);
 
-            if (ErrorDisplay.Text != "")
-                ErrorDisplay.Text = "";
 
+            //if (ErrorDisplay.Text != "")
+            //{
+            //    ErrorDisplay.Text = "";
+           // }
             if (strArray.Length > 1) //check if length of array is more than one
             {
                 Parameters = strArray[1].Split(','); //Splits user input again this time it splits parameters based on comma,
@@ -61,8 +72,12 @@ namespace ASEAssignmentProject
                     if (Variables.Contains(new Variable(Parameters[i]))) //checks if Variable exists
                     {
                         Parameters[i] = Variables[Variables.IndexOf(new Variable(Parameters[i]))].GetValue(); //replaces name of the variable for its value
-                    }
-                }    
+                    }                 
+                }
+                if (Methods.Contains(new Method(Command)))
+                {
+                    MyParser(Methods[Methods.IndexOf(new Method(Command))].CommandsToString());
+                }
 
                 if (Command.Equals("fill")) //checks if command fill was entered
                 {
@@ -84,8 +99,7 @@ namespace ASEAssignmentProject
                     {
                         if (Commands[i] != "endif")
                         {
-                            IF.AddCommand(Commands[i]);
-                            
+                            IF.AddCommand(Commands[i]);                           
                         }
                         else
                         {
@@ -98,6 +112,22 @@ namespace ASEAssignmentProject
                         MyParser(IF.CommandsToString());
                     }
                     LineNumber += IF.GetSize() + 1;
+                } 
+                else if (Command.Equals("Method"))
+                {
+                    Method method = new Method(Parameters[0]);
+                    for (int i = LineNumber; i < Commands.Length; i++)
+                    {
+                        if (Commands[i] != "endMethod")
+                        {
+                            method.AddCommand(Commands[i]);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+
                 }
                 else
                 {                          
@@ -184,7 +214,7 @@ namespace ASEAssignmentProject
                     load.LoadFile(rtb); 
                 }
                 else 
-                    ErrorDisplay.Text = "This command does not require integer."; 
+                    ErrorDisplay.Text = "This command requires parameter."; 
             }
         }
 

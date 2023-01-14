@@ -2,7 +2,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Reflection.Emit;
+
 
 namespace UnitTest
 {
@@ -11,6 +13,8 @@ namespace UnitTest
     {   //creats instances of a classes to enable tests
         static Bitmap DrawingSurface = new Bitmap(400, 300);
         static Canvass Canvass = new Canvass(Graphics.FromImage(DrawingSurface));
+        
+        
         static Parser P = new Parser(DrawingSurface, Canvass);
 
         [TestMethod]
@@ -67,18 +71,6 @@ namespace UnitTest
 
             Assert.AreEqual(0, Canvass.xPosition);
             Assert.AreEqual(0, Canvass.yPosition);
-        }
-        [TestMethod]
-        public void TestParseCommand()
-        {
-
-        }
-        //part 2 tests
-
-        [TestMethod]
-        public void IFStatementTest()
-        {
-
         }
     }
 }
