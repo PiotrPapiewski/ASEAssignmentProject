@@ -9,15 +9,11 @@ namespace ASEAssignmentProject
 {
     public class Load
     {
-
         public void LoadFile(RichTextBox rtb)
         {
-
-            OpenFileDialog ofd = new OpenFileDialog();
+            OpenFileDialog ofd = new OpenFileDialog(); 
             if (ofd.ShowDialog() == DialogResult.OK)
                 rtb.LoadFile(ofd.FileName);
-
         }
-
     }
 }
