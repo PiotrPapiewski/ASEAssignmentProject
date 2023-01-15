@@ -15,7 +15,7 @@ namespace ASEAssignmentProject
         Bitmap DrawingSurface; //creates an bitmap in parser
         Label ErrorDisplay; //creates label in parser
         RichTextBox rtb; //creates richtextbox in parser
-        int LineNumber = 0;
+        int LineNumber = 0; //creates int variable in parser
         public Parser(Bitmap DrawingSurface, Canvass canvass, Label ErrorDisplay, RichTextBox rtb)
         {
             this.DrawingSurface = DrawingSurface; //assings DrawingSurface to a parameter in parser class
@@ -31,9 +31,9 @@ namespace ASEAssignmentProject
       
         }
 
-        public List<Variable>Variables = new List<Variable>(); 
+        List<Variable>Variables = new List<Variable>(); //creates a list for variables
 
-        List<Method>Methods = new List<Method>();    
+        List<Method>Methods = new List<Method>();    //creates a list for methods
         
         String[] Commands;
         String Command; //creates string Command variable
@@ -57,13 +57,8 @@ namespace ASEAssignmentProject
             strArray = CommandLine.Split(' ');//splits user command based on space between arguments and puts it in strarray
             Command = strArray[0]; //specifies that position 0 in a array is a command
             
-            Variable var = new Variable(Command);
+            Variable var = new Variable(Command); //creates temoprary variable
 
-
-            //if (ErrorDisplay.Text != "")
-            //{
-            //    ErrorDisplay.Text = "";
-           // }
             if (strArray.Length > 1) //check if length of array is more than one
             {
                 Parameters = strArray[1].Split(','); //Splits user input again this time it splits parameters based on comma,
@@ -74,9 +69,9 @@ namespace ASEAssignmentProject
                         Parameters[i] = Variables[Variables.IndexOf(new Variable(Parameters[i]))].GetValue(); //replaces name of the variable for its value
                     }                 
                 }
-                if (Methods.Contains(new Method(Command)))
+                if (Methods.Contains(new Method(Command))) //checks if Method exists
                 {
-                    MyParser(Methods[Methods.IndexOf(new Method(Command))].CommandsToString());
+                    MyParser(Methods[Methods.IndexOf(new Method(Command))].CommandsToString()); //executes method
                 }
 
                 if (Command.Equals("fill")) //checks if command fill was entered
@@ -92,39 +87,39 @@ namespace ASEAssignmentProject
                     var.SetValue(Parameters[1]); //sets value to variable
                     Variables.Add(var); //adds variable to the list
                 }
-                else if (Command.Equals("if"))
+                else if (Command.Equals("if")) // checks if commands == "if"
                 {
-                    IF IF = new IF(Parameters[0]);
-                    for (int i = LineNumber; i < Commands.Length; i++)
+                    IF IF = new IF(Parameters[0]);  // creates new IF statement
+                    for (int i = LineNumber; i < Commands.Length; i++) //loops through the all lines from if to endif
                     {
-                        if (Commands[i] != "endif")
+                        if (Commands[i] != "endif") //if command != "endif" 
                         {
-                            IF.AddCommand(Commands[i]);                           
+                            IF.AddCommand(Commands[i]);  //puts all of the commands to the list                       
                         }
                         else
                         {
-                            break;
+                            break; //breaks loop so it doesnt go through lines outside if statement
                         }
                     }
-                    Console.WriteLine("Test2");
-                    if (IF.Check())
+                    
+                    if (IF.Check()) //checks if condition for IF is met
                     {
-                        MyParser(IF.CommandsToString());
+                        MyParser(IF.CommandsToString()); //executes commands from IF
                     }
-                    LineNumber += IF.GetSize() + 1;
+                    LineNumber += IF.GetSize() + 1; //enables rest of the program outside IF to be executed
                 } 
-                else if (Command.Equals("Method"))
+                else if (Command.Equals("Method")) //checks if command == "Method"
                 {
-                    Method method = new Method(Parameters[0]);
-                    for (int i = LineNumber; i < Commands.Length; i++)
+                    Method method = new Method(Parameters[0]); //creates new Method
+                    for (int i = LineNumber; i < Commands.Length; i++) //loops through the all lines from Method to endMethod
                     {
-                        if (Commands[i] != "endMethod")
+                        if (Commands[i] != "endMethod") //if command != equal "endMethod"
                         {
-                            method.AddCommand(Commands[i]);
+                            method.AddCommand(Commands[i]); //puts all of the commands to the list 
                         }
                         else
                         {
-                            break;
+                            break; //breaks loop so it doesnt go through lines outside method
                         }
                     }
 
@@ -214,7 +209,7 @@ namespace ASEAssignmentProject
                     load.LoadFile(rtb); 
                 }
                 else 
-                    ErrorDisplay.Text = "This command requires parameter."; 
+                    ErrorDisplay.Text = "Wrong command or command requires parameter."; 
             }
         }
 

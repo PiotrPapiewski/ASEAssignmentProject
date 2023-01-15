@@ -29,6 +29,7 @@ namespace ASEAssignmentProject
                 if (CommandLine.Text.Equals("run")) //if command line is run then it executes ProgramWindow method from parser class
                 {
                     Parser.ProgramWindow(InputBox.Text);
+                    ErrorDisplay.Text = "";
                 }
                 Refresh(); //refreshes the canvass to display drawings             
             }

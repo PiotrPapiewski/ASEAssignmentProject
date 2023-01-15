@@ -73,6 +73,7 @@ namespace ASEAssignmentProject
                 g.DrawPolygon(p, Triangle);
             }
         }
+        
         public void Reset(int xPositon, int yPosition)
         {
             xPositon = 0;
