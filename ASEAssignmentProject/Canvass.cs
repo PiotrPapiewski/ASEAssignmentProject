@@ -57,6 +57,11 @@ namespace ASEAssignmentProject
             DrawTriangle(g, p, b, xPosition, yPosition, height, width, fill);
         }
 
+        public void DrawOctagon(int size)
+        {
+            DrawOctagon(g, p, b, xPosition, yPosition, size, fill);
+        }
+
         public void Reset()
         {
             xPosition = 0;

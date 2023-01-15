@@ -79,5 +79,28 @@ namespace ASEAssignmentProject
             xPositon = 0;
             yPosition = 0;
         }
+        public void DrawOctagon(Graphics g, Pen p, SolidBrush b, int xPosition, int yPosition, int size, bool fill)
+        {
+            Point A = new Point(xPosition, yPosition);
+            Point B = new Point(xPosition + size, yPosition);
+            Point C = new Point(xPosition + size + size / 2, yPosition + size/2);
+            Point D = new Point(xPosition + size + size / 2, yPosition + size + size / 2);
+            Point E = new Point(xPosition + size, yPosition + size * 2);
+            Point F = new Point(xPosition, yPosition + size * 2);
+            Point G = new Point(xPosition - size / 2, yPosition + size + size / 2 );
+            Point H = new Point(xPosition - size / 2, yPosition + size / 2);
+
+            Point[] Octagon = { A, B, C, D, E, F, G, H };
+
+            if (fill)
+            {
+                g.FillPolygon(b, Octagon);
+            }
+            else
+            {
+                g.DrawPolygon(p, Octagon);
+            }
+
+        }
     }
 }

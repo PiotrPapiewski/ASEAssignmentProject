@@ -158,6 +158,10 @@ namespace ASEAssignmentProject
                     {
                             Canvass.DrawTriangle(ParametersInt[0], ParametersInt[1]);
                     }
+                    else if (Command.Equals("drawoctagon") && ParameterCheck(1))
+                    {
+                        Canvass.DrawOctagon(ParametersInt[0]);
+                    }
                     else if (Command.Equals("movepen") && ParameterCheck(2))
                     {                       
                             Canvass.MovePen(ParametersInt[0], ParametersInt[1]);
@@ -176,11 +180,12 @@ namespace ASEAssignmentProject
             {
                 if (Command.Equals("reset"))
                 {
-                    Canvass.Reset();
+                    Canvass.Reset();                   
                 }
                 else if (Command.Equals("clear"))
                 {
                     Canvass.Clear(DrawingSurface);
+                    ErrorDisplay.Text = "";
                 }
                 else if (Command.Equals("red"))
                 {
