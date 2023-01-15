@@ -62,6 +62,11 @@ namespace ASEAssignmentProject
             DrawOctagon(g, p, b, xPosition, yPosition, size, fill);
         }
 
+        public void DrawRhombus(int size)
+        {
+            DrawRhombus(g, p, b, xPosition, yPosition, size, fill);
+        }
+
         public void Reset()
         {
             xPosition = 0;

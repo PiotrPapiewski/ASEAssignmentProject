@@ -102,5 +102,24 @@ namespace ASEAssignmentProject
             }
 
         }
+
+        public void DrawRhombus(Graphics g, Pen p, SolidBrush b, int xPosition, int yPosition, int size, bool fill)
+        {
+            Point A = new Point(xPosition, yPosition);
+            Point B = new Point(xPosition + size / 2, yPosition + size);
+            Point C = new Point(xPosition, yPosition + size * 2);
+            Point D = new Point(xPosition - size / 2, yPosition + size);
+
+            Point[] Rhombus = { A, B, C, D };
+
+            if (fill)
+            {
+                g.FillPolygon(b, Rhombus);
+            }
+            else
+            {
+                g.DrawPolygon(p, Rhombus);
+            }
+        }
     }
 }

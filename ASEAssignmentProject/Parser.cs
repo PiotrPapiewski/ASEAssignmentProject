@@ -162,6 +162,10 @@ namespace ASEAssignmentProject
                     {
                         Canvass.DrawOctagon(ParametersInt[0]);
                     }
+                    else if (Command.Equals("drawrhombus") && ParameterCheck(1))
+                    {
+                        Canvass.DrawRhombus(ParametersInt[0]);
+                    }
                     else if (Command.Equals("movepen") && ParameterCheck(2))
                     {                       
                             Canvass.MovePen(ParametersInt[0], ParametersInt[1]);
