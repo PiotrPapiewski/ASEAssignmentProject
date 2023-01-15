@@ -9,23 +9,23 @@ namespace ASEAssignmentProject
 {
     public class IF
     {
-        String Condition;
-        List<String> Commands;
+        String Condition; //creates new string Condition
+        List<String> Commands; //creates new List Commands
         public IF(String Condition)
         {
-            this.Condition = Condition;
-            Commands = new List<String>();
+            this.Condition = Condition; //assings Condition to a parameter
+            Commands = new List<String>(); //assings empty list to Commands
         }
 
-        public bool Check()
+        public bool Check() //splits contidion into three parts 
         {
-            int index = 0;
-            string o = "";
-            string[] p = new string[2] {"",""};
-            for (int i = 0; i < Condition.Length; i++)
-            {
-                char c = Condition[i];
-                if (c == '<'||c == '>'||c == '=')
+            int index = 0;                                  //sets index to 0
+            string o = "";                                  //creates empty string for operator                
+            string[] p = new string[2] {"",""};             //creates new array for values to be checked
+            for (int i = 0; i < Condition.Length; i++)      //loops through condition and assings values to array p and operator to o
+            {               
+                char c = Condition[i];                      //creates new variable c and assings it to codition
+                if (c == '<'||c == '>'||c == '=')           
                 {
                     o += c;
                     if (o.Length == 1)
@@ -40,9 +40,10 @@ namespace ASEAssignmentProject
             }
             try
             {
-                int p1 = Convert.ToInt32(p[0]);
-                int p2 = Convert.ToInt32(p[1]);
-                if (o == "==")
+                int p1 = Convert.ToInt32(p[0]); //converts value p[0] from p array too integer and assigns it to p1 variable
+                int p2 = Convert.ToInt32(p[1]); //converts value p[1] from p array too integer and assigns it to p2 variable
+
+                if (o == "==") // return true or false based on a codition: ==, >, <, >=, <=
                 {
                     return p1 == p2;
                 }
@@ -63,19 +64,19 @@ namespace ASEAssignmentProject
                     return p1 >= p2; 
                 }
             }
-            catch (FormatException)
+            catch (FormatException) 
             {
-                return p[0] == p[1];
+                return p[0] == p[1]; 
             }
 
             return false;
 
         }
 
-        public string CommandsToString()
+        public string CommandsToString() //Converts all commands and converts it into one string and can be executed
         {   
             StringBuilder sb = new StringBuilder();
-            foreach (string s in Commands)
+            foreach (string s in Commands) //loops thorugh every command collected from after conditon to before end of if statement
             {
                 sb.Append(s);
                 sb.Append('\n');
@@ -83,12 +84,12 @@ namespace ASEAssignmentProject
             return sb.ToString();
         }
 
-        public void AddCommand(string command)
+        public void AddCommand(string command) //add commands to the list
         {
             Commands.Add(command);
         }
 
-        public int GetSize()
+        public int GetSize() //retuns size of the list
         {
             return Commands.Count;
         }

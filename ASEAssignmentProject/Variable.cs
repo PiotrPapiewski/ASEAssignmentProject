@@ -8,24 +8,24 @@ namespace ASEAssignmentProject
 {
     public class Variable
     {
-        String name;
-        String value;
+        String name; //creates new string name
+        String value; //creates new string value
         public Variable(String name)
         {
-            this.name = name;
+            this.name = name; //assings name to parameter 
         }
 
-        public void SetValue(String value)
+        public void SetValue(String value) //Method used to set value to variable
         {
-            this.value = value;
+            this.value = value; 
         }
-        public override int GetHashCode()
+        public override int GetHashCode() //returns hash code of the name
         {
             return name.GetHashCode();
         }
-        public override bool Equals(Object obj)
+        public override bool Equals(Object obj) //overrides method Equals to make sure that method Contains works properly
         {
-            var item = obj as Variable;
+            var item = obj as Variable; 
 
             if (item == null)
             {
@@ -34,7 +34,7 @@ namespace ASEAssignmentProject
 
             return this.name.Equals(item.name);
         }
-        public String GetValue()
+        public String GetValue() //returns value
         {
             return value;
         }
